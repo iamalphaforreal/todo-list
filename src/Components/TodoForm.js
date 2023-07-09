@@ -19,12 +19,10 @@ const TodoForm = ({ addTodo }) => {
         <TextField
           value={value}
           onChange={handleChange}
-          variant="outlined"
           setTodo={value}
           variant="standard"
           label="input todo"
           fullWidth
-          // sx={{ width: 500 }}
           style={boxStyle}
         />
       </form>

@@ -1,27 +1,27 @@
 import React from "react";
-import {
-  Container,
-  List,
-  ListItem,
-  ListItemText,
-  Divider,
-} from "@mui/material";
+import Todo from "./Todo";
+import { Container, List, Divider } from "@mui/material";
 
-const TodoList = (props) => {
-  return (
-    <Container>
-      <List>
-        {props.todo.map((task) => (
-          <>
-            <ListItem>
-              <ListItemText key={task.id}>{task.task}</ListItemText>
-            </ListItem>
-            {task.length - 1 ? null : <Divider />}
-          </>
-        ))}
-      </List>
-    </Container>
-  );
+const TodoList = ({ todo, deleteTodo, toggleTodo, editedTodo }) => {
+  if (todo.length)
+    return (
+      <Container>
+        <List>
+          {todo.map((task, index) => (
+            <>
+              <Todo
+                {...task}
+                deleteTodo={deleteTodo}
+                key={task.id}
+                editedTodo={editedTodo}
+                toggleTodo={toggleTodo}
+              />
+              <Divider />
+            </>
+          ))}
+        </List>
+      </Container>
+    );
 };
 
 export default TodoList;
