@@ -1,14 +1,10 @@
 import "./App.css";
-import AppState from "./hooks/AppState";
 import { Paper, Grid, Typography } from "@mui/material";
 import TodoForm from "./Components/TodoForm";
 import TodoList from "./Components/TodoList";
+import { TodoProvider } from "./contexts/Todo.Context";
 
 function App() {
-  const todos = [{ task: "wake up", id: 1, completed: false }];
-
-  const { todo, addTodo, deleteTodo, toggleTodo, editTodo } = AppState(todos);
-
   return (
     <>
       <div className="App">
@@ -24,13 +20,10 @@ function App() {
       >
         <Grid item xs={11} md={8} lg={4}>
           <Paper elevation={11} md={8}>
-            <TodoForm addTodo={addTodo} />
-            <TodoList
-              deleteTodo={deleteTodo}
-              todo={todo}
-              toggleTodo={toggleTodo}
-              editedTodo={editTodo}
-            />
+            <TodoProvider>
+              <TodoForm />
+              <TodoList />
+            </TodoProvider>
           </Paper>
         </Grid>
       </Grid>
