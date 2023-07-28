@@ -3,6 +3,7 @@ import { Paper, Grid, Typography } from "@mui/material";
 import TodoForm from "./Components/TodoForm";
 import TodoList from "./Components/TodoList";
 import { TodoProvider } from "./contexts/Todo.Context";
+import MadeBy from "./Components/MadeBy";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
               <TodoForm />
               <TodoList />
             </TodoProvider>
+            <MadeBy />
           </Paper>
         </Grid>
       </Grid>

@@ -22,7 +22,7 @@ const EditTodo = ({ id, task, toggle }) => {
         value={value}
         autoFocus
         style={{
-          width: "30rem",
+          width: "20rem",
           marginTop: "2rem",
           marginLeft: "3rem",
         }}
