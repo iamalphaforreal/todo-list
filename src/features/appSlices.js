@@ -4,7 +4,7 @@ import { nanoid } from "@reduxjs/toolkit";
 const storedTodos = JSON.parse(localStorage.getItem("todos"));
 
 const initialState = {
-  todos: storedTodos.todo.todos || [],
+  todos: storedTodos?.todo?.todos ? storedTodos?.todo?.todos : [],
 };
 
 const todoSlice = createSlice({
