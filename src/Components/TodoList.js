@@ -1,23 +1,27 @@
-import React, { useContext } from "react";
 import Todo from "./Todo";
 import { Container, List, Divider } from "@mui/material";
-import { TodoContext } from "../contexts/Todo.Context";
+import { useSelector } from "react-redux";
+import Time from "./Time";
+import NoTodoAddedYet from "./NoTodoAddedYet";
 
 const TodoList = () => {
-  const todo = useContext(TodoContext);
-  if (todo.length)
-    return (
-      <Container>
-        <List>
-          {todo.map((task, index) => (
-            <div key={task.id}>
-              <Todo {...task} />
-              {index < todo.length - 1 && <Divider />}
-            </div>
-          ))}
-        </List>
-      </Container>
-    );
+  const todos = useSelector((state) => state.todo.todos);
+
+  return todos.length ? (
+    <Container>
+      <List>
+        {todos.map((task, index) => (
+          <div key={task.id}>
+            <Todo {...task} />
+            <Time timestamp={task.date} />
+            {index < todos.length - 1 && <Divider />}
+          </div>
+        ))}
+      </List>
+    </Container>
+  ) : (
+    <NoTodoAddedYet />
+  );
 };
 
 export default TodoList;

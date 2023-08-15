@@ -10,12 +10,10 @@ const MadeBy = () => {
 
   return (
     <Box style={Container}>
-      <span>
-        <b>Made</b>
-        <b style={{ color: "coral" }}>by</b>
-        <b style={{ color: "teal" }}>Alpha </b>
-        <b style={{ color: "gold" }}>Habib🙏</b>
-      </span>
+      <b>Made</b> &nbsp;
+      <b style={{ color: "coral" }}>by</b> &nbsp;
+      <b style={{ color: "teal" }}>Alpha </b>&nbsp;
+      <b style={{ color: "gold" }}>Habib🙏</b>&nbsp; &nbsp;
     </Box>
   );
 };

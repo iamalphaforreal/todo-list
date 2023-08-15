@@ -1,20 +1,18 @@
 import { TextField } from "@mui/material";
 import UseInputState from "../hooks/UseInputState";
-import React, { useContext } from "react";
-import { DispatchContext } from "../contexts/Todo.Context";
+import { useDispatch } from "react-redux";
+import { addTodo } from "../features/appSlices";
 
 const TodoForm = () => {
-  const dispatch = useContext(DispatchContext);
+  const dispatch = useDispatch();
 
   const [value, handleChange, reset] = UseInputState("");
 
   const submit = (e) => {
     e.preventDefault();
-    dispatch({ type: "ADD", task: value });
+    dispatch(addTodo(value));
     reset();
   };
-
-  console.log("TODO FORM RENDER");
 
   return (
     <div>

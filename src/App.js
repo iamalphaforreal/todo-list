@@ -2,7 +2,6 @@ import "./App.css";
 import { Paper, Grid, Typography } from "@mui/material";
 import TodoForm from "./Components/TodoForm";
 import TodoList from "./Components/TodoList";
-import { TodoProvider } from "./contexts/Todo.Context";
 import MadeBy from "./Components/MadeBy";
 
 function App() {
@@ -21,10 +20,8 @@ function App() {
       >
         <Grid item xs={11} md={8} lg={4}>
           <Paper elevation={11} md={8}>
-            <TodoProvider>
-              <TodoForm />
-              <TodoList />
-            </TodoProvider>
+            <TodoForm />
+            <TodoList />
             <MadeBy />
           </Paper>
         </Grid>
@@ -37,5 +34,5 @@ export default App;
 
 // todo-app
 //  todo-form
-//    todo-list
+//   todo-list
 //    each-todos

@@ -6,13 +6,14 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { ListItemSecondaryAction } from "@mui/material";
 import UseToggleState from "../hooks/UseToggleState";
 import EditTodo from "./EditTodo";
-import { DispatchContext } from "../contexts/Todo.Context";
-import React, { useContext, memo } from "react";
+import { useDispatch } from "react-redux";
+import React, { memo } from "react";
+import { toggleTodo, removeTodo } from "../features/appSlices";
 
 const Todo = ({ task, id, completed }) => {
-  const dispatch = useContext(DispatchContext);
+  const dispatch = useDispatch();
   const [edit, toggle] = UseToggleState(false);
-  console.log(task);
+
   return (
     <div>
       {edit ? (
@@ -22,19 +23,19 @@ const Todo = ({ task, id, completed }) => {
           <Checkbox
             color="primary"
             checked={completed}
-            onClick={() => dispatch({ type: "TOGGLE", id: id })}
+            onClick={() => dispatch(toggleTodo(id))}
           />
           <ListItemText
             style={{ textDecoration: completed ? "line-through" : "none" }}
           >
             {task}
           </ListItemText>
-
           <ListItemSecondaryAction>
             <IconButton onClick={() => toggle()}>
               <EditIcon color="primary" />
             </IconButton>
-            <IconButton onClick={() => dispatch({ type: "REMOVE", id: id })}>
+
+            <IconButton onClick={() => dispatch(removeTodo({ id: id }))}>
               <DeleteIcon color="secondary" />
             </IconButton>
           </ListItemSecondaryAction>
