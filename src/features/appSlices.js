@@ -13,7 +13,7 @@ const todoSlice = createSlice({
   reducers: {
     addTodo: {
       reducer: (state, action) => {
-        state.todos.push(action.payload);
+        state.todos.unshift(action.payload);
       },
       prepare(task) {
         return {
